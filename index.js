@@ -58,10 +58,10 @@ function listStation(stations)
 {
   for(var i=0;i<stations.records.length;i++)
   {
-    var stationCountry=stations.records[i].County;
-    var stationAQI=stations.records[i].AQI;
-    var stationSiteName=stations.records[i].SiteName;
-    var stationStatus=stations.records[i].Status;
+    var stationCountry=stations.records[i].county;
+    var stationAQI=stations.records[i].aqi;
+    var stationSiteName=stations.records[i].sitename;
+    var stationStatus=stations.records[i].status;
     
     if(stationAQI<=50)
       iconColor=greenIcon;
@@ -73,8 +73,8 @@ function listStation(stations)
       iconColor=redIcon;
     
     var marker2= new L.Marker(
-      [stations.records[i].Latitude,
-      stations.records[i].Longitude],
+      [stations.records[i].latitude,
+      stations.records[i].longitude],
       {icon:iconColor},
       map,
       {title: stationCountry},
@@ -84,7 +84,7 @@ function listStation(stations)
   }  
 }
   
-fetch('https://data.epa.gov.tw/api/v1/aqx_p_432?limit=1000&api_key=9be7b239-557b-4c10-9775-78cadfc555e9&sort=ImportDate%20desc&format=json', { 
+fetch('https://data.epa.gov.tw/api/v2/aqx_p_432?limit=1000&api_key=8af15130-ab61-4185-88cc-56a9e7b00eb0&sort=ImportDate%20desc&format=json', { 
   method: 'GET'
 })
 .then(function(response) { return response.json(); })
